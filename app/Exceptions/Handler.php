@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Request;
 use Response;
-use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\AuthenticationException as  AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -66,17 +66,17 @@ class Handler extends ExceptionHandler
         //             : redirect()->guest($exception->redirectTo() ?? route('login'));
 
         if ($request->expectsJson()) {
-            return response()->json(['error'=> 'Unauthenticated.'], status:401);
+            return response()->json(['error'=> 'Unauthenticated.'], 401);
         }
 
-        $guard = array_get($exception->guards()), key:0);
-        switch ($guard) {
+        $guard = array_get($exception->guards(),0);
+        switch ($guard) { 
             case 'admin':
-                $login = 'admin.login';
+             $login = 'admin.login';
             break;
 
             default:
-                $login = 'login';
+             $login = 'login';
             break;
         }
         return redirect()->guest(route($login));

@@ -56,7 +56,7 @@ class LoginController extends Controller
 
         $credential = [
             'email' => $request->email,
-            'pasword' => $request->pasword
+            'password' => $request->password
         ];
 
         // Attempt to log the user in
