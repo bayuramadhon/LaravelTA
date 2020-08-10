@@ -59,7 +59,7 @@ class persyaratanumumController extends Controller
         if($request->hasFile('picture')){
             $file = $request->file('picture');
             $file_upload = $request->get('code') . '.'. $file->getClientOrigins();
-            $file->move('items_picture',$file_name);
+            $file->move('Admin',$file_name);
         }
 
         $pu = new persyaratanumum();
