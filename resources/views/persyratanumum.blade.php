@@ -3,118 +3,111 @@
 @section('content')
 
 <div class="container">
-<h2>Persyaratan umum</h2>
-<form method="post" action="/Dataprocurement">
+<h2>Data perusahaan</h2>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form method="post" id="add-item" enctype="multipart/form-data">
 @csrf
 
-<div class="form-group row">
-    <div class="col-sm-2 col-form-label">Surat Keterangan Domisili</div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('Surat keterangan domisili') is-invalid @enderror" 
-            id="Surat keterangan domisili" name="Surat keterangan domisili" value="{{old('Surat keterangan domisili')}}">
-            @error('Surat Keterangan Domisili')
+
+<div class="form-row mt-3">
+    <div class="col-ms-2 col-form-label">Surat Keterangan Domisili :</div>
+        <div class="col-md-2">
+            <input type="text" class="form-control @error('Surat Keterangan Domisili') is-invalid @enderror" 
+            id="SKD" placeholder="No SKD" name="SKD" value="{{old('SKD')}}">
+            @error('SKD')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('Tanggal domisili mulai') is-invalid @enderror" 
-            id="Tanggal domisili mulai" name="Tanggal domisili mulai" value="{{old('Tanggal domisili mulai')}}">
-            @error('Tanggal domisili mulai')
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control @error('TanggalMulaiDomsili') is-invalid @enderror" 
+            id="TanggalMulaiDomsili" placeholder="Tanggal mulai domisili" name="Tanggal_mulai_domisili" value="{{old('TanggalMulaiDomsili')}}">
+            @error('TanggalMulaiDomsili')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('Tanggal domisili Selesai') is-invalid @enderror" 
-            id="Tanggal domisili Selesai" name="Tanggal domisili Selesai" value="{{old('Tanggal domisili Selesai')}}">
-            @error('Tanggal domisili Selesai')
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control @error('TanggalSelesaiDomisili') is-invalid @enderror" 
+            id="TanggalSelesaiDomisili" placeholder="Tanggal selesai domisili" name="Tanggal_Selesai_Domisili" value="{{old('TanggalSelesaiDomisili')}}">
+            @error('TanggalSelesaiDomisili')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        <div class="col-sm-5">
-            <input type="file" name="pdf"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
+            id="File harus upload" name="FileSDOM" >
+            @error('File harus upload')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="form-group row mt-4">
+        <div class="col-sm-2 col-form-label">Surat permohonan menjadi rekan</div>
+            <div class="col-sm-3">
+            <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
+            id="File harus upload" name="FileSpmr" >
+            @error('File harus upload')
+            <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 </div>
 
-  <div class="form-group row">
-  <div class="col-sm-2 col-form-label">Surat permohonan menjadi rekan</div>
-    <div class="col-sm-5">
-      <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
-      id="File harus upload" name="File harus upload" >
-      @error('File harus upload')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-      @enderror
-    </div>
-  </div>
 
-  <div class="form-group row">
-  <div class="col-sm-2 col-form-label">Organisai Chart termasuk personil quality dan safety</div>
-    <div class="col-sm-5">
-      <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
-      id="File harus upload" name="File harus upload" >
-      @error('File harus upload')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-      @enderror
-    </div>
-  </div>
-
-  <div class="col-sm-2 col-form-label">Tanda Daftar Perusahaan</div>
-        <div class="col-sm-5">
+<div class="container">
+<div class="form-row ">
+    <div class="col-ms-2 col-form-label">Tanda Daftar Perusahaan :</div>
+        <div class="col-md-2">
             <input type="text" class="form-control @error('Tanda Daftar Perusahaan') is-invalid @enderror" 
-            id="Tanda Daftar Perusahaan" name="Tanda Daftar Perusahaan" value="{{old('Tanda Daftar Perusahaan')}}">
+            id="Tanda Daftar Perusahaan" placeholder="No TDP" name="Tanda_Daftar_Perusahaan" value="{{old('Tanda Daftar Perusahaan')}}">
             @error('Tanda Daftar Perusahaan')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('Tanggal TDP mulai') is-invalid @enderror" 
-            id="Tanggal domisili mulai" name="Tanggal domisili mulai" value="{{old('Tanggal domisili mulai')}}">
-            @error('Tanggal TDP mulai')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('Tanggal TDP selesai') is-invalid @enderror" 
-            id="Tanggal TDP selesai" name="Tanggal TDP selesai" value="{{old('Tanggal TDP selesai')}}">
-            @error('Tanggal TDP selesai')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <div class="col-sm-5">
-            <input type="file" name="pdf"/>
         </div>
-    </div>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-2 col-form-label">Surat Pernyataan kebenaran dokumen</div>
-    <div class="col-sm-5">
-      <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
-      id="File harus upload" name="File harus upload" >
-      @error('File harus upload')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-      @enderror
-    </div>
-  </div>
-
-<div class="form-group row">
-    <div class="col-sm-2 col-form-label">Lama Perusahaan didirikan</div>
-        <div class="col-sm-5">
-        <input type="text" class="form-control  @error('Lama Perusahaan didirikan') is-invalid @enderror" 
-        id="Lama Perusahaan didirikan" name="Lama Perusahaan didirikan" value="{{old('Lama Perusahaan didirikan')}}">
-        @error('Lama Perusahaan didirikan')
+        <div class="col-md-2">
+            <input type="text" class="form-control @error('Tanggal TDP Mulai') is-invalid @enderror" 
+            id="Tanggal TDP Mulai" placeholder="Tanggal mulai TDP" name="TDPMul" value="{{old('Tanggal TDP Mulai')}}">
+            @error('Tanggal TDP Mulai')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control @error('Tanggal TDP Selesai') is-invalid @enderror" 
+            id="Tanggal TDP Selesai" placeholder="Tanggal selesai TDP" name="TDPSel" value="{{old('Tanggal TDP Selesai')}}">
+            @error('Tanggal TDP Selesai')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="col-sm-3">
+            <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
+            id="File harus upload" name="FileTDP" >
+            @error('File harus upload')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -122,100 +115,85 @@
     </div>
 </div>
 
+
+<div class="form-group row mt-4">
+    <div class="col-sm-2 col-form-label">Surat Pernyataan kebenaran dokumen</div>
+        <div class="col-sm-3">
+        <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
+        id="File harus upload" name="FileSPKD" >
+        @error('File harus upload')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        </div>
+    </div>
+
+
+
+
+<div class="form-group row ">
+    <div class="col-sm-2 col-form-label">Lama Perusahaan didirikan</div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control  @error('Lama Perusahaan didirikan') is-invalid @enderror" 
+            id="Lama Perusahaan didirikan" name="Lama_Perusahaandiri" value="{{old('Lama Perusahaan didirikan')}}">
+            @error('Lama Perusahaan didirikan')
+            <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
 <div class="form-group row">
     <div class="col-sm-2 col-form-label">Lama perusahaan kerjsama dengan PP Urban</div>
-        <div class="col-sm-5">
+        <div class="col-sm-2">
         <input type="text" class="form-control  @error('Lama perusahaan kerjsama dengan PP Urban') is-invalid @enderror" 
-        id="Lama perusahaan kerjsama dengan PP Urban" name="Lama perusahaan kerjsama dengan PP Urban" value="{{old('Lama perusahaan kerjsama dengan PP Urban')}}">
+        id="Lama perusahaan kerjsama dengan PP Urban" name="Lama_perusahaan_kerjsama_PP" value="{{old('Lama perusahaan kerjsama dengan PP Urban')}}">
         @error('Nama perusahaan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-    </div>
-  </div>
-
-<div class="form-group row">
-    <div class="col-sm-2 col-form-label">Data proyek yang bekerjasama dengan PP Urban </div>
-        <div class="col-sm-5">
-        <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
-        id="File harus upload" name="File harus upload" >
-        @error('File harus upload')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>
-</div>
-
-<div class="form-group row">
-<div class="col-sm-2 col-form-label">Daftar peralatan yang dipakai dan Sertifikat kalibrasi </div>
-    <div class="col-sm-5">
-        <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
-        id="File harus upload" name="File harus upload" >
-        @error('File harus upload')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-2 col-form-label">Metode pelaksanaan dan Fakroe Mutu K3L </div>
-        <div class="col-sm-5">
-            <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
-            id="File harus upload" name="File harus upload" >
-            @error('File harus upload')
-            <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-2 col-form-label">Surat Keagenan tunggal/pabrikan/agen/distributor</div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('Nomor Surat Keagenan') is-invalid @enderror" 
-            id="SNomor Surat Keagenan" name="Nomor Surat Keagenan" value="{{old('Nomor Surat Keagenan')}}">
-            @error('Surat Keagenan')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('agen Tanggal mulai') is-invalid @enderror" 
-            id="agen Tanggal mulai" name="agen Tanggal mulai" value="{{old('agen Tanggal mulai')}}">
-            @error('agen Tanggal mulai')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <div class="col-sm-5">
-            <input type="text" class="form-control @error('agen Tanggal selesai') is-invalid @enderror" 
-            id="agen Tanggal selesai" name="agen Tanggal selesai" value="{{old('agen Tanggal selesai')}}">
-            @error('Tanggal domisili Selesai')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <div class="col-sm-5">
-            <input type="file" name="pdf"/>
         </div>
     </div>
+</div>
 
-<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group" role="group" aria-label="First group">
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-    </div>
 
-    <div class="input-group">
-    <div class="input-group-prepend">
-    <button type="submit" class="btn btn-primary mb-2">Selanjutnya</button>
-    </div>
+
+<div class="container">
+<div class="form-group row ">
+    <div class="col-sm-2 col-form-label">Sertifikat kalibrasi</div>
+        <div class="col-sm-3">
+        <input type="file" class="form-control @error('File harus upload') is-invalid @enderror" 
+        id="File harus upload" name="Sertifkalibrasi" >
+        @error('File harus upload')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
     </div>
 </div>
+</div>
+
+
+<div class="container">
+<div class="btn-toolbar justify-content-between mt-5" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a href="/Daftarprocurement" class="btn btn-primary mb-2">Kembali</a>
+        </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary mb-2">Selanjutnya</button>
+        </div>
+    </div>
+</div>
+</div>
+
 
 </div>
 </form> 

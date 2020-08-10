@@ -15,14 +15,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::get('/Dataprocurement', 'dataperusahaan@index');
-Route::post('/Dataprocurement', 'dataperusahaan@store');
+// Route::post('/Dataprocurement', 'dataperusahaan@store');
+Route::post('/Daftarprocurement', 'dataperusahaan@store');
 // Route::get('/Dataprocurement', 'dataperusahaan@create');
+
+Route::redirect('/home', '/Daftarprocurement');
 
 Route::get('/Daftarprocurement', function () {
 return view('daftarproc');
 });
 
+Route::get('/persyaratan_umum', function () {
+return view('persyratanumum');
+});
+
+Route::get('/keuanganpajak', function () {
+    return view('keupajak');
+    });
+    
 
 Auth::routes();
 

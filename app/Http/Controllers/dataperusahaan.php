@@ -58,24 +58,38 @@ class dataperusahaan extends Controller
         //     'almtperusahaan'=> $request->almtperusahaan,
         //     'telp'=> $request->telp,
         //     'email'=> $request->email,
-        //     'PIC'=> $request->PIC,
+        //     'PIC'=> $request->PIC,   
         // ]);
         
         // validasi input data perusahaan
         $request->validate([
             'divisi'=>'required',
-            'jenisvendor'=>'required',
-            'Jenisbrg_pekerjaan'=>'required',
+            'jenisVendor'=>'required',
+            'jenisbrg_pekerjaan'=>'required',
             'namaperusahaan'=>'required',
-            'Almtperusahaan'=>'required',
+            'almtperusahan'=>'required',
             'telp'=>'required',
             'email'=>'required',
             'PIC'=>'required',
         ]);
 
-        data_perusahaan::create($request->all());
+        $dp = new data_perusahaan(); // sesuai nama model ny
+        // nama kolom di db = nama element di html
+        $dp->divisi = $request->divisi;
+        $dp->jenisVendor = $request->jenisVendor;
+        $dp->jenisbrg_pekerjaan = $request->jenisbrg_pekerjaan;
+        $dp->namaperusahaan = $request->namaperusahaan;
+        $dp->almtperusahan = $request->almtperusahan;
+        $dp->telp = $request->telp;
+        $dp->email = $request->email;
+        $dp->PIC = $request->PIC;
 
-        return redirect('/Dataprocurement')->with('status','Data berhasil Ditambahkan');
+        $dp->save();
+
+        // data_perusahaan::create($request->all());
+
+        // ini buat arahin ke form selanjutnya
+        return redirect('/persyaratan_umum')->with('status','Data berhasil Ditambahkan');
     }
 
     /**

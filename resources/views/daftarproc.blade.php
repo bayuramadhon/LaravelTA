@@ -4,10 +4,19 @@
 
 <div class="container">
 <h2>Data perusahaan</h2>
-<form method="post" action="/Dataprocurement">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form method="post">
 @csrf
 
-  <div class="form-group row">
+  <div class="form-group row mt-3">
     <div class="col-sm-2 col-form-label">Divisi</div>
     <div class="col-sm-5">
       <input type="text" class="form-control @error('divisi') is-invalid @enderror" 
@@ -36,9 +45,9 @@
   <div class="form-group row">
     <div class="col-sm-2 col-form-label">Jenis barang/pekerjaan</div>
     <div class="col-sm-5">
-    <input type="text" class="form-control  @error('jenisbrg_pekerjaan') is-invalid @enderror" 
-    id="jenisbrg_pekerjaan" name="jenisbrg_pekerjaan" value="{{old('jenisbrg_pekerjaan')}}">
-    @error('jenisbrg_pekerjaan')
+    <input type="text" class="form-control  @error('jenis barang pekerjaan') is-invalid @enderror" 
+    id="jenis barang pekerjaan" name="jenisbrg_pekerjaan" value="{{old('jenis barang pekerjaan')}}">
+    @error('jenis barang pekerjaan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -62,9 +71,9 @@
   <div class="form-group row">
     <div class="col-sm-2 col-form-label">Alamat perusahaan</div>
     <div class="col-sm-5">
-    <input type="text" class="form-control @error('almtperusahaan') is-invalid @enderror" 
-    id="almtperusahaan" name="almtperusahaan" value="{{old('almtperusahaan')}}">
-    @error('almtperusahaan')
+    <input type="text" class="form-control @error('almtperusahan') is-invalid @enderror" 
+    id="almtperusahan" name="almtperusahan" value="{{old('almtperusahan')}}">
+    @error('almtperusahan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -111,21 +120,17 @@
       </div>
   </div>
   
-  <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group" role="group" aria-label="First group">
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-    </div>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group" role="group" aria-label="First group">
+    <a href="{{ url()->previous() }}"  type="submit"  class="btn btn-primary mb-2">Kembali</a>
+  </div>
 
-    <div class="input-group">
-    <div class="input-group-prepend">
+<div class="input-group">
+  <div class="input-group-prepend">
     <button type="submit" class="btn btn-primary mb-2">Selanjutnya</button>
     </div>
   </div>
 </div>
-
-
-  <!-- <button type="submit" class="btn btn-primary mb-2">Submit</button> -->
-
 
 </div>
 </form> 
