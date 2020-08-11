@@ -33,9 +33,10 @@ return view('daftarproc');
 Route::get('/persyaratan_umum', function () {
 return view('persyratanumum');
 });
+Route::post('/persyaratan_umum', 'persyaratanumumController@store');
 
 Route::get('/keuanganpajak', function () {
-    return view('keupajak');
+    return view('datakeu_pajak');
     });
     
 

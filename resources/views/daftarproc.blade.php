@@ -1,4 +1,4 @@
-@extends('layouts.User')
+@extends('layouts.app')
 
 @section('content')
 
@@ -45,9 +45,9 @@
   <div class="form-group row">
     <div class="col-sm-2 col-form-label">Jenis barang/pekerjaan</div>
     <div class="col-sm-5">
-    <input type="text" class="form-control  @error('jenis barang pekerjaan') is-invalid @enderror" 
-    id="jenis barang pekerjaan" name="jenisbrg_pekerjaan" value="{{old('jenis barang pekerjaan')}}">
-    @error('jenis barang pekerjaan')
+    <input type="text" class="form-control  @error('jenisbrg_pekerjaan') is-invalid @enderror" 
+    id="jenisbrg_pekerjaan" name="jenisbrg_pekerjaan" value="{{old('jenisbrg_pekerjaan')}}">
+    @error('jenisbrg_pekerjaan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -84,7 +84,7 @@
   <div class="form-group row">
     <div class="col-sm-2 col-form-label">Telepon</div>
     <div class="col-sm-5">
-    <input type="text" class="form-control  @error('telp') is-invalid @enderror" 
+    <input type="number" class="form-control  @error('telp') is-invalid @enderror" 
     id="telp" name="telp" value="{{old('telp')}}">
     @error('Telepon')
         <span class="invalid-feedback" role="alert">
