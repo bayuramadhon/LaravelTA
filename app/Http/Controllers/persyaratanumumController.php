@@ -53,7 +53,6 @@ class persyaratanumumController extends Controller
             'Sertifkalibrasi'=>'required',
         ]);
 
-
         $no_skd = $request->SKD;
         $file_sdom= '';
         if($request->hasFile('FileSDOM')){
