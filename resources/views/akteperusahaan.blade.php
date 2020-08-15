@@ -3,7 +3,7 @@
 @section('content')
 <form method="post" enctype="multipart/form-data">
     <div class="container">
-        <h2>Akte Perusahaan X</h2>
+        <h2>Akte Perusahaan</h2>
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul>
