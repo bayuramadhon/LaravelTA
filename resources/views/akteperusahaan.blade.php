@@ -3,7 +3,7 @@
 @section('content')
 <form method="post" enctype="multipart/form-data">
     <div class="container">
-        <h2>Akte Perusahaan</h2>
+        <h2>Akte Perusahaan X</h2>
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -152,7 +152,7 @@
         <div class="form-group row ">
             <div class="col-sm-2 col-form-label">Susunan Pengurus</div>
             <div class="col-sm-3">
-                <input type="file" class="form-control @error('FileSp') is-invalid @enderror" id="FileSp" name="FileSp" value="{{ old('FileSp') }}"> 
+                <input type="file" class="form-control @error('FileSp') is-invalid @enderror" id="FileSp" name="FileSp" value="{{ old('FileSp') }}">
                 @error('FileSp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
