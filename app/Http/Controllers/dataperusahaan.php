@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\data_perusahaan;
+use App\persyaratanumum;
+use App\keupajak;
+use App\akteperu;
+use App\QSHE;
+use Auth;
 
 class dataperusahaan extends Controller
 {
@@ -17,7 +22,7 @@ class dataperusahaan extends Controller
     {
         // $users = DB::table('data_perusahaan')->get();
         $users = data_perusahaan::all();
-        return view('Datavendor.index', compact('users')); 
+        return view('Datavendor.index', compact('users'));
     }
 
     /**
@@ -40,14 +45,14 @@ class dataperusahaan extends Controller
     {
         //cara 1
         // $user = new User;
-        // $user->divisi = $request->divisi; 
-        // $user->jenisVendor = $request->jenisVendor; 
-        // $user->jenisbrg/pekerjaan = $request->jenisbrg/pekerjaan; 
-        // $user->namaperusahaan = $request->namaperusahaan; 
-        // $user->almtperusahaan = $request->almtperusahaan; 
-        // $user->telp = $request->telp; 
-        // $user->email = $request->email; 
-        // $user->PIC = $request->PIC; 
+        // $user->divisi = $request->divisi;
+        // $user->jenisVendor = $request->jenisVendor;
+        // $user->jenisbrg/pekerjaan = $request->jenisbrg/pekerjaan;
+        // $user->namaperusahaan = $request->namaperusahaan;
+        // $user->almtperusahaan = $request->almtperusahaan;
+        // $user->telp = $request->telp;
+        // $user->email = $request->email;
+        // $user->PIC = $request->PIC;
 
         // cara 2 field dan nama texfield html
         // data_perusahaan::create([
@@ -58,9 +63,9 @@ class dataperusahaan extends Controller
         //     'almtperusahaan'=> $request->almtperusahaan,
         //     'telp'=> $request->telp,
         //     'email'=> $request->email,
-        //     'PIC'=> $request->PIC,   
+        //     'PIC'=> $request->PIC,
         // ]);
-        
+
         // validasi input data perusahaan
         $request->validate([
             'divisi'=>'required',
@@ -68,28 +73,31 @@ class dataperusahaan extends Controller
             'jenisbrg_pekerjaan'=>'required',
             'namaperusahaan'=>'required',
             'almtperusahan'=>'required',
-            'telp'=>'required',
+            'telepon'=>'required',
             'email'=>'required',
             'PIC'=>'required',
         ]);
 
+        $user = Auth::user();
         $dp = new data_perusahaan(); // sesuai nama model ny
         // nama kolom di db = nama element di html
+        $dp->user_id = $user->id;
         $dp->divisi = $request->divisi;
         $dp->jenisVendor = $request->jenisVendor;
         $dp->jenisbrg_pekerjaan = $request->jenisbrg_pekerjaan;
         $dp->namaperusahaan = $request->namaperusahaan;
         $dp->almtperusahan = $request->almtperusahan;
-        $dp->telp = $request->telp;
+        $dp->telp = $request->telepon;
         $dp->email = $request->email;
         $dp->PIC = $request->PIC;
 
         $dp->save();
+        $id_perusahaan = $dp->id;
 
         // data_perusahaan::create($request->all());
 
         // ini buat arahin ke form selanjutnya
-        return redirect('/persyaratan_umum')->with('status','Data berhasil Ditambahkan');
+        return redirect('/persyaratan_umum/' . $id_perusahaan)->with('status','Data berhasil Ditambahkan');
     }
 
     /**
@@ -100,7 +108,6 @@ class dataperusahaan extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -111,6 +118,8 @@ class dataperusahaan extends Controller
      */
     public function edit($id)
     {
+        $dp = data_perusahaan::whereId($id)->firstOrFail();
+        return view('Datavendor.edit_dp', compact('dp'));
         //
     }
 
@@ -123,7 +132,30 @@ class dataperusahaan extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'divisi'=>'required',
+            'jenisVendor'=>'required',
+            'jenisbrg_pekerjaan'=>'required',
+            'namaperusahaan'=>'required',
+            'almtperusahan'=>'required',
+            'telepon'=>'required',
+            'email'=>'required',
+            'PIC'=>'required',
+        ]);
+        $dp = data_perusahaan::whereId($id)->firstOrFail();
+        $dp->divisi = $request->divisi;
+        $dp->jenisVendor = $request->jenisVendor;
+        $dp->jenisbrg_pekerjaan = $request->jenisbrg_pekerjaan;
+        $dp->namaperusahaan = $request->namaperusahaan;
+        $dp->almtperusahan = $request->almtperusahan;
+        $dp->telp = $request->telepon;
+        $dp->email = $request->email;
+        $dp->PIC = $request->PIC;
+
+        $dp->save();
+        $id;
+        return redirect('/persyaratan_umum/edit/' . $id);
+
     }
 
     /**
@@ -134,6 +166,16 @@ class dataperusahaan extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dp = data_perusahaan::whereId($id)->firstOrFail();
+        $dp->delete();
+        $pu = persyaratanumum::where('id_perusahaan',$id)->firstOrFail();
+        $pu->delete();
+        $kp = keupajak::where('id_perusahaan',$id)->firstOrFail();
+        $kp->delete();
+        $ap = akteperu::where('id_perusahaan',$id)->firstOrFail();
+        $ap->delete();
+        $qs = QSHE::where('id_perusahaan',$id)->firstOrFail();
+        $qs->delete();
+        return redirect('/Dataprocurement')->with('status', 'Data berhasil dihapus');
     }
 }

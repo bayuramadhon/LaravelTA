@@ -33,24 +33,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="Dataprocurement">{{ __('Lihat Procurement') }}</a>
-                        </li> 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="Daftarprocurement">{{ __('Daftar Procurement') }}</a>
-                        </li> 
+                            <a class="nav-link" href="{{ url('Dataprocurement') }}">{{ __('Lihat Procurement') }}</a>
+                        </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Hasil Pemenang') }}</a>
-                        </li> 
+                            <a class="nav-link" href="{{ url('Daftarprocurement') }}">{{ __('Daftar Procurement') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('Hasilpemenang') }}">{{ __('Hasil Pemenang') }}</a>
+                        </li>
 
                         <!--  Navbar Untuk Sesuai nama User -->
                         @guest

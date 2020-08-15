@@ -39,8 +39,8 @@
                 <td>{{ $vendor->email }}</td>
                 <td>{{ $vendor->PIC }}</td>
                 <td>
-                <a a href="" class="bagde badge-success">edit</a>
-                <a a href="" class="bagde badge-danger">delete</a>
+                <a a href="/Dataprocurement/edit/{{ $vendor->id }}"class="bagde badge-success">edit</a>
+                <a a href="/Dataprocurement/delete/{{ $vendor->id }}" class="bagde badge-danger">delete</a>
                 </td>
             </tr>
             @endforeach

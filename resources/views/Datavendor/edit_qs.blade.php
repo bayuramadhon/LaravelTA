@@ -20,7 +20,7 @@
 <div class="form-group row mt-3">
   <div class="col-sm-2 col-form-label">File ISO K3L(9001:2015, ISO 14001, QHSAS 18001)</div>
     <div class="col-sm-5">
-      <input type="file" class="form-control @error('FILEISO') is-invalid @enderror" value="{{old('FILEISO')}}"
+      <input type="file" class="form-control @error('FILEISO') is-invalid @enderror" value="{{ $QS->File_iso }}"
       id="FILEISO" name="FILEISO" >
       @error('FILEISO')
         <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
     <div class="col-sm-2 col-form-label">Penanggung jawab iso Mutu & K3L diperusahaan anda</div>
         <div class="col-sm-5">
         <input type="text" class="form-control  @error('PenanggungJwb') is-invalid @enderror"
-        id="PenanggungJwb" name="PenanggungJwb" value="{{old('PenanggungJwb')}}">
+        id="PenanggungJwb" name="PenanggungJwb" value="{{ $QS->Penanggung_jwb }}">
         @error('PenanggungJwb')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
 <div class="form-group row">
   <div class="col-sm-2 col-form-label">Lampirkan Organisasi chart</div>
     <div class="col-sm-5">
-      <input type="file" class="form-control @error('FileOrganisasi') is-invalid @enderror" value="{{old('FileOrganisasi')}}"
+      <input type="file" class="form-control @error('FileOrganisasi') is-invalid @enderror" value="{{ $QS->FileOrgCV }}"
       id="FileOrganisasi" name="FileOrganisasi" >
       @error('FileOrganisasi')
         <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
 <div class="form-group row">
     <div class="col-sm-2 col-form-label">Data teknis</div>
         <div class="col-sm-5">
-        <input type="file" class="form-control @error('FileTeknis') is-invalid @enderror" value="{{old('FileTeknis')}}"
+        <input type="file" class="form-control @error('FileTeknis') is-invalid @enderror" value="{{ $QS->File_Teknis}}"
         id="FileTeknis" name="FileTeknis">
         @error('FileTeknis')
         <span class="invalid-feedback" role="alert">
