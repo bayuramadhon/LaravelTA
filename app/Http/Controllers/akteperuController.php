@@ -88,7 +88,7 @@ class akteperuController extends Controller
             $file->move('file',$file_sp);
         }
 
-
+        $ap = new akteperu();
 
         $ap->id_perusahaan = $id_perusahaan;
         $ap->Akte_Pendirian_No = $request->APP;

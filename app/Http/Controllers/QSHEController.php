@@ -44,7 +44,7 @@ class QSHEController extends Controller
 
         $iso = $request->FILEISO;
         $file_iso= '';
-        if($request->hasFile('FILEISO')){ // coba gus bantu
+        if($request->hasFile('FILEISO')){ 
             $file = $request->file('FILEISO');
             $file_iso = "iso_" . $iso . "_" . $file->getClientOriginalName();
             $file->move('file',$file_iso);
@@ -62,6 +62,7 @@ class QSHEController extends Controller
             $file->move('file', $file_teknis);
         }
 
+        $QS = new QSHE();
 
         $QS->id_perusahaan = $id_perusahaan;
         $QS->File_Iso = $file_iso;
@@ -141,7 +142,6 @@ class QSHEController extends Controller
 
         }
 
-        $QS = new QSHE();
 
 
         $QS->File_Iso = $file_iso;

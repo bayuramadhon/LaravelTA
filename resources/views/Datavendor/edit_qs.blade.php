@@ -77,7 +77,7 @@
 
 <div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mt-3" role="group" aria-label="First group">
-    <a href="{{ url('akteperusahaan') }}"  class="btn btn-primary mb-2">Kembali</a>
+        <a href="{{ url('akteperusahaan') }}"  class="btn btn-primary mb-2">Kembali</a>
   </div>
 
 <div class="input-group ">
