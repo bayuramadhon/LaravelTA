@@ -62,7 +62,7 @@ class LoginController extends Controller
         // Attempt to log the user in
         if (Auth::guard('admin')->Attempt($credential, $request->member)){
            // if login succesful, then redirect to their intended location
-           return redirect()->intended(route('admin.home')); 
+           return redirect()->intended(route('home')); 
         }
 
         // if Unsuccesfull, then redirect back to the login with the form data 

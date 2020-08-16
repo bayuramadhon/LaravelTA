@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/home', function () {
@@ -83,7 +83,7 @@ Route::middleware(['auth'])->group(function() {
 
     // Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
     // Route::post('/login','AuthAdmin\LoginController@Login')->name('admin.login.submit');
-    Route::get('/', 'AdminController@index')->name('admin.home');
+    // Route::get('/', 'AdminController@index')->name('admin.home');
     Route::get('/password/reset', 'AuthAdmin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/email', 'AuthAdmin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     Route::get('/password/reset/{token}', 'AuthAdmin\ResetPasswordController@showResetForm')->name('admin.password.reset');

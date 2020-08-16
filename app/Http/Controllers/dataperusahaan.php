@@ -21,7 +21,15 @@ class dataperusahaan extends Controller
     public function index()
     {
         // $users = DB::table('data_perusahaan')->get();
-        $users = data_perusahaan::all();
+        $user = Auth::user();
+        $user_id = $user->id;
+        $role = $user->role;
+        $users = [];
+        if ($role == 'Admin') {
+            $users = data_perusahaan::all();
+        } else {
+            $users = data_perusahaan::where('user_id', $user_id)->get();
+        }
         return view('Datavendor.index', compact('users'));
     }
 
