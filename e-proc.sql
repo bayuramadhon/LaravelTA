@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2020 at 04:14 AM
+-- Generation Time: Aug 16, 2020 at 08:04 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `eprocurement`
+-- Database: `e-proc`
 --
 
 -- --------------------------------------------------------
@@ -39,6 +39,13 @@ CREATE TABLE `admins` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrator', 'administrator@mail.com', NULL, '$2y$10$pOHd1ynmV.sUjIJCmarv2egSf6D6gWf7Ie.E0O9nVFWxM4/Jenmbu', NULL, '2020-08-10 20:38:39', '2020-08-10 20:38:39');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +54,7 @@ CREATE TABLE `admins` (
 
 CREATE TABLE `akte_peru` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_perusahaan` bigint(20) UNSIGNED NOT NULL,
   `Akte_Pendirian_No` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Bank` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Rek` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -55,14 +63,23 @@ CREATE TABLE `akte_peru` (
   `Apt_No` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Tgl_Apt` date NOT NULL,
   `File_Apt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Tgl_Direksi` date NOT NULL,
+  `Tgl_Direksi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `File_ktp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `File_Spm` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `File_Skm` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `File_Sp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `akte_peru`
+--
+
+INSERT INTO `akte_peru` (`id`, `id_perusahaan`, `Akte_Pendirian_No`, `Bank`, `Rek`, `File_Akte`, `File_Pengesahan`, `Apt_No`, `Tgl_Apt`, `File_Apt`, `Tgl_Direksi`, `File_ktp`, `File_Skm`, `File_Sp`, `remember_token`, `created_at`, `updated_at`) VALUES
+(5, 31, '1212', 'bni', '121213', 'akte_1212_Kartu Uas.pdf', 'Pngshan_1212_Kartu Uas.pdf', '323', '2000-11-12', 'apt_1212_Kartu Uas.pdf', '12', 'ktp_1212_Kartu Uas.pdf', 'skm_1212_Kartu Uas.pdf', 'sp_1212_Kartu Uas.pdf', NULL, '2020-08-15 00:36:09', '2020-08-15 00:36:09'),
+(6, 31, '1212', 'bni', '121213', 'akte_1212_Kartu Uas.pdf', 'Pngshan_1212_Kartu Uas.pdf', '323', '2000-11-12', 'apt_1212_Kartu Uas.pdf', '12', 'ktp_1212_Kartu Uas.pdf', 'skm_1212_Kartu Uas.pdf', 'sp_1212_Kartu Uas.pdf', NULL, '2020-08-15 00:36:25', '2020-08-15 00:36:25'),
+(7, 32, '12', 'bni', '121212', 'akte_12_Kartu Uas.pdf', 'Pngshan_12_Kartu Uas.pdf', '2121', '2000-01-12', 'apt_12_Kartu Uas.pdf', '12', 'ktp_12_Kartu Uas.pdf', 'skm_12_Kartu Uas.pdf', 'sp_12_Kartu Uas.pdf', NULL, '2020-08-15 03:26:02', '2020-08-15 03:26:02');
 
 -- --------------------------------------------------------
 
@@ -72,12 +89,13 @@ CREATE TABLE `akte_peru` (
 
 CREATE TABLE `data_perusahaan` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
   `divisi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenisVendor` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenisbrg_pekerjaan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `namaperusahaan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `almtperusahan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telp` int(11) NOT NULL,
+  `telp` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PIC` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -89,10 +107,8 @@ CREATE TABLE `data_perusahaan` (
 -- Dumping data for table `data_perusahaan`
 --
 
-INSERT INTO `data_perusahaan` (`id`, `divisi`, `jenisVendor`, `jenisbrg_pekerjaan`, `namaperusahaan`, `almtperusahan`, `telp`, `email`, `PIC`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'a', 'z', 'd', 'e', 'w', 2424, 'w', 's', NULL, '2020-08-05 19:54:37', '2020-08-05 19:54:37'),
-(2, 'q', 'w', 'e', 'r', 'a', 12321, 'x', 'as', NULL, '2020-08-09 07:16:47', '2020-08-09 07:16:47'),
-(3, 'q', 'w', 's', 's', 'q', 1213, 'qws', 'w', NULL, '2020-08-09 07:38:34', '2020-08-09 07:38:34');
+INSERT INTO `data_perusahaan` (`id`, `user_id`, `divisi`, `jenisVendor`, `jenisbrg_pekerjaan`, `namaperusahaan`, `almtperusahan`, `telp`, `email`, `PIC`, `remember_token`, `created_at`, `updated_at`) VALUES
+(32, 1, 'q', 'q', 'q', 'q', 'q', '1213', 'q', 'q', NULL, '2020-08-15 03:23:36', '2020-08-15 03:23:36');
 
 -- --------------------------------------------------------
 
@@ -102,6 +118,7 @@ INSERT INTO `data_perusahaan` (`id`, `divisi`, `jenisVendor`, `jenisbrg_pekerjaa
 
 CREATE TABLE `keu_pjk` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_perusahaan` int(11) NOT NULL,
   `NPWP_No` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `File_NPWP` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Sppkp_No` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -110,14 +127,24 @@ CREATE TABLE `keu_pjk` (
   `File_Spt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Spp_No` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `File_Spp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Ekuitas` int(11) NOT NULL,
+  `bank` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rekening` int(25) NOT NULL,
+  `File_bank` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Ekuitas` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Kwalifikasi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `File_Kap` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `File_Kd` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `keu_pjk`
+--
+
+INSERT INTO `keu_pjk` (`id`, `id_perusahaan`, `NPWP_No`, `File_NPWP`, `Sppkp_No`, `File_Sppkp`, `Spt_No`, `File_Spt`, `Spp_No`, `File_Spp`, `bank`, `rekening`, `File_bank`, `Ekuitas`, `Kwalifikasi`, `File_Kd`, `remember_token`, `created_at`, `updated_at`) VALUES
+(15, 31, '2121', 'npwp_2121_Kartu Uas.pdf', '1213', 'sppkp_2121_Kartu Uas.pdf', '121', 'spt_2121_Kartu Uas.pdf', '2323', 'spp_2121_Kartu Uas.pdf', 'bni', 121213, 'bank_2121_Kartu Uas.pdf', '233311', '< 1M', 'kd_2121_Kartu Uas.pdf', NULL, '2020-08-15 00:33:31', '2020-08-15 00:33:31'),
+(16, 32, '2121313', 'npwp_2121313_Kartu Uas.pdf', '232323', 'sppkp_2121313_Kartu Uas.pdf', '21212', 'spt_2121313_Kartu Uas.pdf', '12121', 'spp_2121313_Kartu Uas.pdf', 'bni', 2131121, 'bank_2121313_Kartu Uas.pdf', '2000323', '< 1M', 'kd_2121313_Kartu Uas.pdf', NULL, '2020-08-15 03:25:24', '2020-08-15 03:25:24');
 
 -- --------------------------------------------------------
 
@@ -130,20 +157,6 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2020_07_11_102903_create_admins_table', 1),
-(4, '2020_07_24_043028_data_perusahaan', 1),
-(5, '2020_07_24_044452_persyaratanumum', 1),
-(6, '2020_07_24_075912_keu_pjk', 1),
-(7, '2020_07_24_082146_akte__peru', 1),
-(8, '2020_07_24_083018_qshe', 1);
 
 -- --------------------------------------------------------
 
@@ -165,6 +178,7 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `persyaratanumum` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_perusahaan` int(11) NOT NULL,
   `Skd_No` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Tgl_Dom_Mul` date NOT NULL,
   `Tgl_Dom_Sel` date NOT NULL,
@@ -183,6 +197,13 @@ CREATE TABLE `persyaratanumum` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `persyaratanumum`
+--
+
+INSERT INTO `persyaratanumum` (`id`, `id_perusahaan`, `Skd_No`, `Tgl_Dom_Mul`, `Tgl_Dom_Sel`, `File_SDOM`, `File_Spmr`, `Tdp_no`, `Tgl_Tdp_Mul`, `Tgl_Tdp_Sel`, `File_Tdp`, `File_Spkd`, `lama_perushndirikan`, `lamaprshn_krjsamapp`, `File_srtifktkalibrasi`, `remember_token`, `created_at`, `updated_at`) VALUES
+(28, 32, '2121', '2020-08-15', '2020-08-15', 'sdom_2121_Kartu Uas.pdf', 'spmr_2121_Kartu Uas.pdf', '21212', '2020-08-15', '2020-08-15', 'tdp_2121_Kartu Uas.pdf', 'skpd_2121_Kartu Uas.pdf', 12, 3, 'sfk_2121_Kartu Uas.pdf', NULL, '2020-08-15 03:24:21', '2020-08-15 03:24:21');
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +212,7 @@ CREATE TABLE `persyaratanumum` (
 
 CREATE TABLE `qshe` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_perusahaan` int(11) NOT NULL,
   `File_Iso` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Penanggung_Jwb` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `File_OrgCV` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -199,6 +221,13 @@ CREATE TABLE `qshe` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `qshe`
+--
+
+INSERT INTO `qshe` (`id`, `id_perusahaan`, `File_Iso`, `Penanggung_Jwb`, `File_OrgCV`, `File_Teknis`, `remember_token`, `created_at`, `updated_at`) VALUES
+(4, 32, 'iso_C:\\xampp\\tmp\\phpEA17.tmp_Kartu Uas.pdf', 'def', 'org_C:\\xampp\\tmp\\phpEA17.tmp_Kartu Uas.pdf', 'teknis_C:\\xampp\\tmp\\phpEA17.tmp_Kartu Uas.pdf', NULL, '2020-08-15 03:26:18', '2020-08-15 03:26:18');
 
 -- --------------------------------------------------------
 
@@ -222,7 +251,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'ari', 'ari@mail.com', NULL, '$2y$10$C8aW4vPLRR1lRn/nBIXjg.XFwsq4GN9T4SEis/eidAVkjOgT3FMSW', NULL, '2020-07-28 01:58:19', '2020-07-28 01:58:19');
+(1, 'ari', 'ari@mail.com', NULL, '$2y$10$C8aW4vPLRR1lRn/nBIXjg.XFwsq4GN9T4SEis/eidAVkjOgT3FMSW', 'wAPaktCt1XZFpc3uW2z2bFWDOIutb0p5tseQSNdgTXgLDzygg0Wa56StZMPy', '2020-07-28 01:58:19', '2020-07-28 01:58:19');
 
 --
 -- Indexes for dumped tables
@@ -292,37 +321,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `akte_peru`
 --
 ALTER TABLE `akte_peru`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `data_perusahaan`
 --
 ALTER TABLE `data_perusahaan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `keu_pjk`
 --
 ALTER TABLE `keu_pjk`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `persyaratanumum`
 --
 ALTER TABLE `persyaratanumum`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `qshe`
 --
 ALTER TABLE `qshe`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
