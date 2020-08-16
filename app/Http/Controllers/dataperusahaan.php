@@ -23,9 +23,9 @@ class dataperusahaan extends Controller
         // $users = DB::table('data_perusahaan')->get();
         $user = Auth::user();
         $user_id = $user->id;
-        $role = $user->role;
+        $is_admin = $user->is_admin;
         $users = [];
-        if ($role == 'Admin') {
+        if ($is_admin) {
             $users = data_perusahaan::all();
         } else {
             $users = data_perusahaan::where('user_id', $user_id)->get();

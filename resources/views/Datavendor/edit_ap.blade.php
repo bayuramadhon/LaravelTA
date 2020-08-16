@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-2">
                 <input type="text" class="form-control @error('Rek') is-invalid @enderror" id="Rek" placeholder="No Rek"
-                    name="Rek" value="{{ $ap->Rek ) }}">
+                    name="Rek" value="{{ $ap->Rek }}">
                 @error('Rek')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

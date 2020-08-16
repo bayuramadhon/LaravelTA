@@ -210,7 +210,6 @@ class keupajakController extends Controller
             $kp->File_Kd = $file_kd;
         }
 
-        $kp = new keupajak();
 
 
         $kp->NPWP_No = $request->NPWP_No;

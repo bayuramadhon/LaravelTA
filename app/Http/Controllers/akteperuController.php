@@ -88,7 +88,6 @@ class akteperuController extends Controller
             $file->move('file',$file_sp);
         }
 
-        $ap = new akteperu();
 
 
         $ap->id_perusahaan = $id_perusahaan;
@@ -131,7 +130,7 @@ class akteperuController extends Controller
     public function edit($id)
     {
         $ap = akteperu::where('id_perusahaan',$id)->firstOrFail();
-        return view('Datavendor.edit_dp', compact('ap'));
+        return view('Datavendor.edit_ap', compact('ap'));
         //
     }
 

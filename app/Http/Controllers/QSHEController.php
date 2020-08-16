@@ -62,7 +62,6 @@ class QSHEController extends Controller
             $file->move('file', $file_teknis);
         }
 
-        $QS = new QSHE();
 
         $QS->id_perusahaan = $id_perusahaan;
         $QS->File_Iso = $file_iso;

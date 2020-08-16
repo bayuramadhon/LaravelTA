@@ -43,10 +43,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('Dataprocurement') }}">{{ __('Lihat Procurement') }}</a>
                         </li>
-
+                        @if (!Auth::guest() && !Auth::user()->is_admin)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('Daftarprocurement') }}">{{ __('Daftar Procurement') }}</a>
                         </li>
+                        @endif
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('Hasilpemenang') }}">{{ __('Hasil Pemenang') }}</a>
