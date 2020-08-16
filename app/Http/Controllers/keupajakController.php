@@ -231,7 +231,7 @@ class keupajakController extends Controller
 
         $kp->save();
 
-        return redirect('/akteperusahaan/' . $id);
+        return redirect('/akteperusahaan/edit/' . $id);
     }
 
     /**

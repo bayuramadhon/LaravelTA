@@ -29,6 +29,7 @@
                 @enderror
                 <div class="col-mb-10">
                     <input type="file" class="@error('FileNPWP') is-invalid @enderror" value="{{ $kp->File_NPWP }}" name="FileNPWP">
+                    <a href="{{ asset('file/' . $kp->File_NPWP ) }}" target="_blank">Lihat File</a>
                     @error('FileNPWP')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -48,6 +49,7 @@
                     </span>
                 @enderror
                 <input type="file" class="@error('SPPKP') is-invalid @enderror"  value="{{ $kp->File_Sppkp }}" name="FileSppkp">
+                <a href="{{ asset('file/' . $kp->File_Sppkp  ) }}" target="_blank">Lihat File</a>
                 @error('FileSppkp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -66,6 +68,7 @@
                     </span>
                 @enderror
                 <input type="file" class="@error('FileSpt') is-invalid @enderror"  value="{{ $kp->File_Spt }}" name="FileSpt">
+                <a href="{{ asset('file/' . $kp->File_Spt   ) }}" target="_blank">Lihat File</a>
                 @error('FileSpt')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -85,6 +88,7 @@
                         </span>
                     @enderror
                     <input type="file" class="@error('FileSpp') is-invalid @enderror" value="{{ $kp->File_Spp }}" name="FileSpp">
+                    <a href="{{ asset('file/' . $kp->File_Spp    ) }}" target="_blank">Lihat File</a>
                     @error('FileSpp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -106,7 +110,7 @@
                     </div>
                     <div class="col-md-2">
                         <input type="text" class="form-control @error('Rekenig') is-invalid @enderror" id="Rekenig"
-                            placeholder="Rek" name="Rek" value="{{ $kp->Rekening }}">
+                            placeholder="Rek" name="Rek" value="{{ $kp->rekening }}">
                         @error('Rekenig')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -116,6 +120,7 @@
                     <div class="col-sm-3">
                         <input type="file" class="form-control @error(' FileBank') is-invalid @enderror" value="{{ $kp->File_Bank }}" }} id=" FileBank"
                             name=" FileBank" >
+                            <a href="{{ asset('file/' . $kp->File_Bank    ) }}" target="_blank">Lihat File</a>
                         @error(' FileBank')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -158,6 +163,7 @@
             <div class="col-sm-2 col-form-label">Kemampuan Dasar (KD) Sisa kemampuan nyata & paket</div>
             <div class="col-sm-3">
                 <input type="file" class="form-control @error('FileKd') is-invalid @enderror" value="{{ $kp->File_Kd }}" }} id="FileKd" name="FileKd">
+                <a href="{{ asset('file/' . $kp->File_Kd   ) }}" target="_blank">Lihat File</a>
                 @error('FileKd')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

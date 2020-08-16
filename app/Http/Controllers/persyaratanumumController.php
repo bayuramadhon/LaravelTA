@@ -125,6 +125,7 @@ class persyaratanumumController extends Controller
      * @param  \App\persyaratanumum  $persyaratanumum
      * @return \Illuminate\Http\Response
      */
+    
     public function edit($id)
     {
         $pu = persyaratanumum::where('id_perusahaan',$id)->firstOrFail();
