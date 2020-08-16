@@ -36,7 +36,7 @@
     <div class="col-sm-2 col-form-label">Penanggung jawab iso Mutu & K3L diperusahaan anda</div>
         <div class="col-sm-5">
         <input type="text" class="form-control  @error('PenanggungJwb') is-invalid @enderror"
-        id="PenanggungJwb" name="PenanggungJwb" value="{{ $QS->Penanggung_jwb }}">
+        id="PenanggungJwb" name="PenanggungJwb" value="{{ $QS->Penanggung_Jwb }}">
 
         @error('PenanggungJwb')
         <span class="invalid-feedback" role="alert">

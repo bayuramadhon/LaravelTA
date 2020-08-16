@@ -186,7 +186,7 @@
     <div class="container">
     <div class="btn-toolbar justify-content-between mt-5" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="First group">
-            <a href="{{ url('Daftarprocurement') }}"  class="btn btn-primary mb-2">Kembali</a>
+            <a href="{{ url('Dataprocurement') }}"  class="btn btn-primary mb-2">Kembali</a>
             </div>
 
         <div class="input-group">

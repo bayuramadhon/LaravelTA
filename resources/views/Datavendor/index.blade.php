@@ -34,7 +34,7 @@
                 <td>{{ $vendor->jenisVendor }}</td>
                 <td>{{ $vendor->jenisbrg_pekerjaan }}</td>
                 <td>{{ $vendor->namaperusahaan }}</td>
-                <td>{{ $vendor->almtperusahaan }}</td>
+                <td>{{ $vendor->almtperusahan }}</td>
                 <td>{{ $vendor->telp }}</td>
                 <td>{{ $vendor->email }}</td>
                 <td>{{ $vendor->PIC }}</td>

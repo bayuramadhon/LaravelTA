@@ -46,8 +46,8 @@
                 @enderror
             </div>
             <div class="col-sm-3">
-                <input type="file" class="form-control @error('FileAkte') is-invalid @enderror"  value="{{ old('FileAkte') }}" id="FileAkte"
-                    name="FileAkte">
+                <input type="file" class="form-control @error('FileAkte') is-invalid @enderror"
+                    value="{{ old('FileAkte') }}" id="FileAkte" name="FileAkte">
                 @error('FileAkte')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -124,8 +124,8 @@
         <div class="form-group row ">
             <div class="col-sm-2 col-form-label">Fotokopi KTP Pengurus</div>
             <div class="col-sm-3">
-                <input type="file" class="form-control @error('FileKTP') is-invalid @enderror" value="{{ old('FileKTP') }}" id="FileKTP"
-                    name="FileKTP">
+                <input type="file" class="form-control @error('FileKTP') is-invalid @enderror"
+                    value="{{ old('FileKTP') }}" id="FileKTP" name="FileKTP">
                 @error('FileKTP')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -138,8 +138,8 @@
         <div class="form-group row ">
             <div class="col-sm-2 col-form-label">Susunan kepemilikan modal</div>
             <div class="col-sm-3">
-                <input type="file" class="form-control @error('FileSKM') is-invalid  @enderror" id="FileSKM" value="{{ old('FileSKM') }}"
-                    name="FileSKM">
+                <input type="file" class="form-control @error('FileSKM') is-invalid  @enderror" id="FileSKM"
+                    value="{{ old('FileSKM') }}" name="FileSKM">
                 @error('FileSKM')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -152,7 +152,8 @@
         <div class="form-group row ">
             <div class="col-sm-2 col-form-label">Susunan Pengurus</div>
             <div class="col-sm-3">
-                <input type="file" class="form-control @error('FileSp') is-invalid @enderror" id="FileSp" name="FileSp" value="{{ old('FileSp') }}">
+                <input type="file" class="form-control @error('FileSp') is-invalid @enderror" id="FileSp" name="FileSp"
+                    value="{{ old('FileSp') }}">
                 @error('FileSp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -164,7 +165,7 @@
 
         <div class="btn-toolbar justify-content-between mt-5" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="First group">
-                <a href="{{ url('keuanganpajak') }}"  class="btn btn-primary mb-2">Kembali</a>
+                <a href="{{ url('keuanganpajak') }}" class="btn btn-primary mb-2">Kembali</a>
             </div>
 
             <div class="input-group">

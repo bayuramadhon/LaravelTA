@@ -59,7 +59,7 @@
     <div class="col-sm-2 col-form-label">Nama perusahaan</div>
     <div class="col-sm-5">
     <input type="text" class="form-control  @error('namaperusahaan') is-invalid @enderror"
-    id="namaperusahaan" name="namaperusahaan" value="{{ $dp->jenisbrg_pekerjaan }}">
+    id="namaperusahaan" name="namaperusahaan" value="{{ $dp->namaperusahaan  }}">
     @error('namaperusahaan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
